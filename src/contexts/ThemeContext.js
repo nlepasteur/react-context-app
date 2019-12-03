@@ -9,10 +9,14 @@ class ThemeContextProvider extends Component {
     light: { syntax: '#555', ui: '#ddd', bg: '#eee' },
     dark: { syntax: '#ddd', ui: '#333', bg: '#555' }
   }
+  handleChange = () => {
+    this.setState({ isLightTheme: !this.state.isLightTheme })
+  }
+
   render() {
     console.log('I am the context : ', MyContext)
     return (
-      <MyContext.Provider value={{ ...this.state }}>
+      <MyContext.Provider value={{ ...this.state, button: this.handleChange }}>
         {this.props.children}
         {/* childrens définis dans app correspondent en fait à
           <ThemeContextProvider >
